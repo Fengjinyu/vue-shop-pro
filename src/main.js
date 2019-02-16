@@ -17,6 +17,15 @@ import './assets/fonts/iconfont.css'
 import axios from 'axios'
 // 配置axios
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+axios.interceptors.request.use(function(config) {
+  var token = window.sessionStorage.getItem('token')
+  config.headers.Authorization = token
+  // Do something before request is sent
+  return config
+}, function(error) {
+  // Do something with request error
+  return Promise.reject(error)
+})
 Vue.prototype.$http = axios
 
 // 注册标签组件
