@@ -20,6 +20,7 @@
           :collapse="menushow"
           :collapse-transition="false"
           :unique-opened="true"
+          :router="true"
         >
           <el-submenu
             :index="item.id + ''"
